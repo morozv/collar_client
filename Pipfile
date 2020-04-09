@@ -1,0 +1,28 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+
+[packages]
+pipenv = "*"
+pyautogui = "*"
+datetime = "*"
+ftplib = "*"
+pathlib = "*"
+time = "*"
+msvcrt = "*"
+os = "*"
+pyinstaller = "*"
+dannie = "*"
+opencv-python = "*"
+cv2 = "*"
+numpy = "*"
+webdriver-mamanger = "*"
+selenium = "*"
+requests = "*"
+
+[requires]
+python_version = "3.8"
