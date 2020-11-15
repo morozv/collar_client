@@ -23,6 +23,8 @@ numpy = "*"
 webdriver-mamanger = "*"
 selenium = "*"
 requests = "*"
+keyboard = "*"
+tqdm = "*"
 
 [requires]
 python_version = "3.8"

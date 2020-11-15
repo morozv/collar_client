@@ -2,15 +2,18 @@
 Суть программы заключается в том чтобы делать, в заданый интервал, скриншоты и фото с веб камеры и 
 отпровлять это определенный файл на Ftp сервер
 '''
-import msvcrt
+
 import time
 import datetime
 import os
+import pyautogui
+
 #словарь для подключения к ftp
+
 ftp_udifikashen = {
     'ftp_url' : 'f999143o.beget.tech',
-    'ftp_login' : 'f999143o_111',
-    'ftp_pass' : 'svem9Se'
+    'ftp_login' : 'f999143o_osheinik',
+    'ftp_pass' : 'Sergei2012@'
     }
 
 def otravka_na_ftp (): #отправляем изображения на ftp
@@ -25,12 +28,12 @@ def otravka_na_ftp (): #отправляем изображения на ftp
         else:
                 print('Фото с вебкамеры отправлено')
     #Удаляем файл
-    for name_fail_scr_cam_del in ['scr_' + screenshotd + '.png', 'cam_' + screenshotd + '.png']:
-        os.remove(name_fail_scr_cam_del)
+    for name_fail_scr_cam_del in ['scr_' + screenshotd + '.jpg', 'cam_' + screenshotd + '.png']:
+        os.unlink(name_fail_scr_cam_del)
 
 def skrin_and_campoto_name_dete (): #функция делает скриншот с экрана и присваевает именам файлов текщую дату
     import cv2     #чтоб cv2 заработало по виртуальным окружением вбей сие python -m pip install  opencv-python
-    #import pyautogui
+    import pyautogui
     #делаем скриншот с экрана
     screen = pyautogui.screenshot('scr_' + screenshotd + '.jpg')
     #Делаем снимок с камеры
@@ -51,15 +54,19 @@ user_task = input ("Введите задачу которую вы сейчас
 user_time_start_sessia = datetime.datetime.now().strftime('%Y.%m.%d в %H:%M:%S')
 user_obalyt_time_start_sessia = time.time() #Переменная дающая нам точку остчета старта сессии
 print ('Пользователь ' + user_login + ' приступпил к выполенинию задачи \"' + user_task + '\" ' + user_time_start_sessia)
-while not msvcrt.kbhit():
+while True:
     #Узнаем дату и присваиваем ей переменную
     screenshotd = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
     #функция делает скриншот с экрана и присваевает именам файлов текщую дату
     skrin_and_campoto_name_dete ()
     #отправляем изображения на ftp
     otravka_na_ftp ()
-    #Ждем время 
-    time.sleep(3)
+    #Ждем время
+    print ('Ждем примерно 30 секунд до следующего снимка.')
+    from tqdm import tqdm
+    mylist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    for i in tqdm(mylist):
+        time.sleep(1)
     #Переменная текущая точка
     user_obalyt_time_tekyshaia_tochra_sessia = time.time() 
     #сколько отработано по текущей задаче
